@@ -32,10 +32,13 @@ subtext = smallfont.render('Please describe the word below', True, black)
 # buttons to click 
 next = smallfont.render('NEXT' , True , blue)
 quit = smallfont.render('QUIT' , True , red)
+
 #time
 clock = 301 # 5 minutes maybe?
 #just for testing
 i = 0
+scoreCount = 0
+
 while True:
     # testing purpose. Replace The string with the actual word 
     actual_word = "Word[{}]".format(str(i))
@@ -43,6 +46,8 @@ while True:
     #print for time that counts down
     time_print = "Time left: " + str(clock)
     timer = smallfont.render(time_print , True , blue)
+    
+    score = smallfont.render('SCORE: '+ str(scoreCount) , True , green)
     for ev in pygame.event.get():
         if ev.type == pygame.QUIT:
             pygame.quit()
@@ -53,24 +58,28 @@ while True:
                 pygame.quit()
             # if Next button is pressed 
             if 200 <= mouse[0] <= 270 and 300 <= mouse[1] <= 320:
-                # reset timer
-                clock = 301
                 #change the word here // testing right now just random value 
                 i = random.randrange(1, 100)
+            # if Score button us pressed
+            if 140 <= mouse[0] < 250 and 250 <= mouse[1] <= 265:
+                #Increasing score count
+                scoreCount = scoreCount + 1
                   
     #background color 
     screen.fill(white)
     mouse = pygame.mouse.get_pos()
-    # print("Mouse Position: " + str(mouse))
+    print("Mouse Position: " + str(mouse))
     #quit button location
     screen.blit(quit , (width/2-90,height/2+100))
     #next button location
     screen.blit(next , (width/2,height/2+100))
+    #score button location
+    screen.blit(score , (width/2-60, height/2+50))
     #Welcome message
     screen.blit(text , (width/2-175,height/2-175))
     screen.blit(subtext , (width/2-185,height/2-125))
     #actual Charades word
-    screen.blit(word , (width/2-60,height/2))
+    screen.blit(word , (20,height/2))
     #time location
     screen.blit(timer , (width/2-75,height/2-75))
     # counter should not go below zero 

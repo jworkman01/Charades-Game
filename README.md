@@ -1,7 +1,7 @@
 # Charades-Game
 
 # need to install the following:
-# pygame
+#pip pygame
 # random
 # time 
 # other API
