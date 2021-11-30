@@ -15,3 +15,5 @@
 5. Run pip install pygame
 6. Run pip install random
 7. Run pip install time
+# To run the game:
+    python3 main.py
