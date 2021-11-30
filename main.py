@@ -1,61 +1,65 @@
-import pygame 
+#   Team members: 
+#       Brooke Bleacher
+#       Geer Smith
+#       Justin Workman
+#       Max Hilgenberg
+
+#imports
+import pygame #API 1
 import random
+import time
 pygame.init()
 
+# Colors
 white = (255, 255, 255)
 green = (0, 255, 0)
 blue = (0, 0, 128)
-quit_Color = (255, 0, 0)
+red = (255, 0, 0)
 black = (0, 0, 0)
- 
+
+# Dimensions
 width = 400
 height = 400
- 
+#Setup
 screen = pygame.display.set_mode((width, height))
- 
 pygame.display.set_caption('Charades Window')
- 
+# Font sizes 
 font = pygame.font.Font('freesansbold.ttf', 32)
 smallfont = pygame.font.SysFont('Corbel',35)
-
+# introduction text
 text = font.render('Welcome to Charades', True, black)
 subtext = smallfont.render('Please describe the word below', True, black)
-
+# buttons to click 
 next = smallfont.render('NEXT' , True , blue)
-quit = smallfont.render('QUIT' , True , quit_Color)
-
-next_X = width/2+30
-next_Y = height/2+95
-
-quit_X = width/2+30
-quit_Y = height/2+120
-
+quit = smallfont.render('QUIT' , True , red)
+#time
+clock = 301 # 5 minutes maybe?
+#just for testing
 i = 0
 while True:
-    #where we implm
+    # testing purpose. Replace The string with the actual word 
     actual_word = "Word[{}]".format(str(i))
     word = font.render(actual_word , True , green)
-    # timer = smallfont.render(str(i) , True , blue)
+    #print for time that counts down
+    time_print = "Time left: " + str(clock)
+    timer = smallfont.render(time_print , True , blue)
     for ev in pygame.event.get():
-          
         if ev.type == pygame.QUIT:
             pygame.quit()
-              
-        #checks if a mouse is clicked
+        #checks if mouse clicks somewhere
         if ev.type == pygame.MOUSEBUTTONDOWN:
-              
-            #if the mouse is clicked on the
-            # button the game is terminated
+            # if Quit button is pressed
             if 110 <= mouse[0] <= 170 and 300 <= mouse[1] <= 320:
                 pygame.quit()
+            # if Next button is pressed 
             if 200 <= mouse[0] <= 270 and 300 <= mouse[1] <= 320:
-                i = i + 1
+                # reset timer
+                clock = 301
+                #change the word here // testing right now just random value 
+                i = random.randrange(1, 100)
                   
-    # fills the screen with a color
+    #background color 
     screen.fill(white)
-      
-    # stores the (x,y) coordinates into
-    # the variable as a tuple
     mouse = pygame.mouse.get_pos()
     # print("Mouse Position: " + str(mouse))
     #quit button location
@@ -63,11 +67,20 @@ while True:
     #next button location
     screen.blit(next , (width/2,height/2+100))
     #Welcome message
-    screen.blit(text , (width/2-175,height/2-100))
-    screen.blit(subtext , (width/2-185,height/2-50))
+    screen.blit(text , (width/2-175,height/2-175))
+    screen.blit(subtext , (width/2-185,height/2-125))
     #actual Charades word
     screen.blit(word , (width/2-60,height/2))
-    
-      
-    # updates the frames of the game
+    #time location
+    screen.blit(timer , (width/2-75,height/2-75))
+    # counter should not go below zero 
+    # reduce clock counter by a second 
+    if clock > 0:
+        time.sleep(1)
+        clock = clock - 1
+    # if the time is 0 print that the time has expired 
+    else:
+        over = smallfont.render("Your Time is over!" , True , red)
+        screen.blit(over , (width/2-105,height/2-45))
+
     pygame.display.update()
