@@ -32,9 +32,9 @@ subtext = smallfont.render('Please describe the word below', True, black)
 # buttons to click 
 next = smallfont.render('NEXT' , True , blue)
 quit = smallfont.render('QUIT' , True , red)
-
 #time
 clock = 301 # 5 minutes maybe?
+scoreCount = 0
 #just for testing
 i = 0
 scoreCount = 0
@@ -68,7 +68,7 @@ while True:
     #background color 
     screen.fill(white)
     mouse = pygame.mouse.get_pos()
-    print("Mouse Position: " + str(mouse))
+    #print("Mouse Position: " + str(mouse))
     #quit button location
     screen.blit(quit , (width/2-90,height/2+100))
     #next button location
