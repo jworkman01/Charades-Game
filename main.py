@@ -35,6 +35,7 @@ quit = smallfont.render('QUIT' , True , red)
 score = smallfont.render('SCORE: '+ str(scoreCount) , True , green)
 #time
 clock = 301 # 5 minutes maybe?
+scoreCount = 0
 #just for testing
 i = 0
 while True:
