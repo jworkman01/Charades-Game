@@ -32,6 +32,7 @@ subtext = smallfont.render('Please describe the word below', True, black)
 # buttons to click 
 next = smallfont.render('NEXT' , True , blue)
 quit = smallfont.render('QUIT' , True , red)
+score = smallfont.render('SCORE: '+ str(scoreCount) , True , green)
 #time
 clock = 301 # 5 minutes maybe?
 #just for testing
@@ -57,6 +58,10 @@ while True:
                 clock = 301
                 #change the word here // testing right now just random value 
                 i = random.randrange(1, 100)
+            # if Score button us pressed
+            if 90 <= mouse[0] < 370 and 300 <= mouse[1] <= 320:
+                #Increasing score count
+                scoreCount = Scorecount + 1
                   
     #background color 
     screen.fill(white)
@@ -66,6 +71,8 @@ while True:
     screen.blit(quit , (width/2-90,height/2+100))
     #next button location
     screen.blit(next , (width/2,height/2+100))
+    #score button location
+    screen.blit(score , (width/2+90, height/2+100))
     #Welcome message
     screen.blit(text , (width/2-175,height/2-175))
     screen.blit(subtext , (width/2-185,height/2-125))
