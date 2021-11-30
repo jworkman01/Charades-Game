@@ -60,7 +60,7 @@ while True:
                 #change the word here // testing right now just random value 
                 i = random.randrange(1, 100)
             # if Score button us pressed
-            if 90 <= mouse[0] < 370 and 300 <= mouse[1] <= 320:
+            if 300 <= mouse[0] < 380 and 300 <= mouse[1] <= 320:
                 #Increasing score count
                 scoreCount = Scorecount + 1
                   
