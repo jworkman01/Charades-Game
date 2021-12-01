@@ -14,8 +14,9 @@
 5. Run "pip install time"
 # To run the game:
     python3 main.py
-# How to play the game
-1. The total score is kept during the game
-2. To increase score, click the score to update it
-3. To go to next word, click "NEXT"
-4. To quit game, click "QUIT"
+# How to play the game with friends
+1. This game can be played with friends
+2. Everyone playing the game will need to have it installed
+3. If a team guesses correctly, click the score to update it 
+4. To go to the next word, click "NEXT"
+5. To quit the game, click "QUIT"
