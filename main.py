@@ -6,8 +6,9 @@
 
 #imports
 import pygame #API 1
-import random
 import time
+import pip._vendor.requests
+import json
 pygame.init()
 
 # Colors
@@ -33,16 +34,16 @@ subtext = smallfont.render('Please describe the word below', True, black)
 next = smallfont.render('NEXT' , True , blue)
 quit = smallfont.render('QUIT' , True , red)
 #time
-clock = 301 # 5 minutes maybe?
+clock = 301
+# gets a random word from the random word API
+response = pip._vendor.requests.get ("https://random-word-api.herokuapp.com/word?number=1&swear=0");
 scoreCount = 0
-#just for testing
-i = 0
 scoreCount = 0
 
 while True:
-    # testing purpose. Replace The string with the actual word 
-    actual_word = "Word[{}]".format(str(i))
-    word = font.render(actual_word , True , green)
+    data = json.loads (response.text)
+    data = json.dumps (data)
+    word = font.render(data , True , green)
     #print for time that counts down
     time_print = "Time left: " + str(clock)
     timer = smallfont.render(time_print , True , blue)
@@ -58,8 +59,8 @@ while True:
                 pygame.quit()
             # if Next button is pressed 
             if 200 <= mouse[0] <= 270 and 300 <= mouse[1] <= 320:
-                #change the word here // testing right now just random value 
-                i = random.randrange(1, 100)
+                #change the word here
+                response = pip._vendor.requests.get ("https://random-word-api.herokuapp.com/word?number=1&swear=0");
             # if Score button us pressed
             if 140 <= mouse[0] < 250 and 250 <= mouse[1] <= 265:
                 #Increasing score count
@@ -79,7 +80,7 @@ while True:
     screen.blit(text , (width/2-175,height/2-175))
     screen.blit(subtext , (width/2-185,height/2-125))
     #actual Charades word
-    screen.blit(word , (20,height/2))
+    screen.blit(word , (70,height/2))
     #time location
     screen.blit(timer , (width/2-75,height/2-75))
     # counter should not go below zero 
