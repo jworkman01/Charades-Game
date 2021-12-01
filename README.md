@@ -2,7 +2,6 @@
 
 # need to install the following:
 # pygame
-# random
 # time 
 # other API
 
@@ -12,7 +11,6 @@
 2. Run python3 get-pip.py
 3. Run pip install requests
 4. Run pip install pygame
-5. Run pip install random
-6. Run pip install time
+5. Run pip install time
 # To run the game:
     python3 main.py
