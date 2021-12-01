@@ -4,7 +4,7 @@
 #       Justin Workman
 #       Max Hilgenberg
 
-#imports
+#imports (gotten from pip)
 import pygame #API 1
 import time
 import pip._vendor.requests
