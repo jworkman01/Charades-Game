@@ -1,3 +1,7 @@
+# Welcome to Charades!
+
+Before you start playing, you will need to complete some installations:
+
 # Installing python:
 First, check to see if you have python installed:
 1. Open terminal
